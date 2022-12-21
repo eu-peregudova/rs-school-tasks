@@ -4,15 +4,15 @@ class IntBuilder {
         this.int = int;
     }
 
-    plus() {
-        for (let i of arguments) {
+    plus(...numbers) {
+        for (let i of numbers) {
             this.int += i
         }
         return this
     }
 
-    minus() {
-        for (let i of arguments) {
+    minus(...numbers) {
+        for (let i of numbers) {
             this.int -= i
         }
         return this
@@ -47,8 +47,8 @@ function StringBuilder(str = '') {
     this.string = `${str}`
 }
 
-StringBuilder.prototype.plus = function () {
-    for (let i of arguments) {
+StringBuilder.prototype.plus = function (...strings) {
+    for (let i of strings) {
         this.string += `${i}`
     }
     return this
