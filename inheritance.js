@@ -42,4 +42,51 @@ class IntBuilder {
     }
 }
 
+//ES5
+function StringBuilder(str = '') {
+    this.string = `${str}`
+}
+
+StringBuilder.prototype.plus = function () {
+    for (let i of arguments) {
+        this.string += `${i}`
+    }
+    return this
+}
+
+StringBuilder.prototype.minus = function (n) {
+    this.string = this.string.substring(0, this.string.length - n)
+    return this
+}
+
+StringBuilder.prototype.multiply = function (int) {
+    let initialString = this.string
+    for (let i = 1; i <= int - 1; i++) {
+        this.string += initialString
+    }
+    return this
+}
+
+StringBuilder.prototype.divide = function (n) {
+    let k = Math.floor(this.string.length / n)
+    this.string = this.string.substring(0, k)
+    return this
+}
+
+StringBuilder.prototype.remove = function (str) {
+    while (this.string.includes(str)) {
+        this.string = this.string.substring(0, this.string.indexOf(str)) +
+            this.string.substring(this.string.indexOf(str) + str.length)
+    }
+    return this
+}
+
+StringBuilder.prototype.sub = function (from, n) {
+    this.string = this.string.substring(from, from + n)
+    return this
+}
+
+StringBuilder.prototype.get = function () {
+    return this.string
+}
 
