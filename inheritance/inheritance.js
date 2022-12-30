@@ -1,7 +1,18 @@
 // ES6
-class IntBuilder {
+//base class
+class InheritanceES6 {
     constructor(int = 0) {
-        this.int = int;
+        this.int = int
+    }
+    get() {
+        return this.int
+    }
+}
+
+//child class
+class IntBuilder extends InheritanceES6 {
+    constructor(int) {
+        super(int);
     }
 
     plus(...numbers) {
@@ -33,19 +44,28 @@ class IntBuilder {
         return this
     }
 
-    get() {
-        return this.int
-    }
-
     static random(from, to) {
         return Math.floor(Math.random() * (to + 1 - from) + from)
     }
 }
 
 //ES5
-function StringBuilder(str = '') {
+//base class
+function InheritanceES5(str = '') {
     this.string = `${str}`
 }
+
+InheritanceES5.prototype.get = function () {
+    return this.string
+}
+
+//child class
+function StringBuilder(str) {
+    InheritanceES5.call(this, str)
+}
+
+StringBuilder.prototype = Object.create(InheritanceES5.prototype)
+StringBuilder.prototype.constructor = StringBuilder
 
 StringBuilder.prototype.plus = function (...strings) {
     for (let i of strings) {
@@ -86,7 +106,4 @@ StringBuilder.prototype.sub = function (from, n) {
     return this
 }
 
-StringBuilder.prototype.get = function () {
-    return this.string
-}
 
