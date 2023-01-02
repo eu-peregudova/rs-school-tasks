@@ -16,14 +16,14 @@ class IntBuilder extends InheritanceES6 {
     }
 
     plus(...numbers) {
-        for (let i of numbers) {
+        for (const i of numbers) {
             this.int += i
         }
         return this
     }
 
     minus(...numbers) {
-        for (let i of numbers) {
+        for (const i of numbers) {
             this.int -= i
         }
         return this
@@ -68,7 +68,7 @@ StringBuilder.prototype = Object.create(InheritanceES5.prototype)
 StringBuilder.prototype.constructor = StringBuilder
 
 StringBuilder.prototype.plus = function (...strings) {
-    for (let i of strings) {
+    for (const i of strings) {
         this.string += `${i}`
     }
     return this
@@ -80,7 +80,7 @@ StringBuilder.prototype.minus = function (n) {
 }
 
 StringBuilder.prototype.multiply = function (int) {
-    let initialString = this.string
+    const initialString = this.string
     for (let i = 1; i <= int - 1; i++) {
         this.string += initialString
     }
@@ -88,7 +88,7 @@ StringBuilder.prototype.multiply = function (int) {
 }
 
 StringBuilder.prototype.divide = function (n) {
-    let k = Math.floor(this.string.length / n)
+    const k = Math.floor(this.string.length / n)
     this.string = this.string.substring(0, k)
     return this
 }
@@ -105,5 +105,3 @@ StringBuilder.prototype.sub = function (from, n) {
     this.string = this.string.substring(from, from + n)
     return this
 }
-
-
